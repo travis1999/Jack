@@ -1,0 +1,6 @@
+[flake8]
+max-line-length = 160
+per-file-ignores =
+    # sly breaks python
+    src/jack/jacklexer.py: F821
+exclude = venv,.tox,.pytest_cache,.github
