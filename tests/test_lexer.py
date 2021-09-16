@@ -45,19 +45,14 @@ def test_string(lexer):
 def test_symbols(lexer):
     tokens = get_tokens(lexer, "+-*/=;")
 
-    assert tokens[0].type == "PLUS"
-    assert tokens[1].type == "MINUS"
-    assert tokens[2].type == "MULTIPLY"
-    assert tokens[3].type == "DIVIDE"
-    assert tokens[4].type == "ASSIGN"
-    assert tokens[5].type == "SEMI"
+    token_names = ["PLUS", "MINUS", "MULTIPLY",
+                   "DIVIDE", "ASSIGN", "SEMI"]
 
-    assert tokens[0].value == "+"
-    assert tokens[1].value == "-"
-    assert tokens[2].value == "*"
-    assert tokens[3].value == "/"
-    assert tokens[4].value == "="
-    assert tokens[5].value == ";"
+    token_values = ["+", "-", "*", "/", "=", ";"]
+
+    for tok, tok_name, tok_value in zip(tokens, token_names, token_values):
+        assert tok.type == tok_name
+        assert tok.value == tok_value
 
 
 def test_lex_error(lexer):
